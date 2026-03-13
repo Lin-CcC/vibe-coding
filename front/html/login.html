@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>网易云原型 - 登录</title>
+  <link rel="stylesheet" href="./assets/app.css" />
+</head>
+<body data-page="login">
+  <div class="app no-tab">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="icon-btn" onclick="history.length>1?history.back():location.href='./index.html'" aria-label="返回">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15.5 5l-7 7l7 7l-1.4 1.4L5.7 12l8.4-8.4L15.5 5z"/></svg>
+        </button>
+        <div class="title">登录</div>
+        <div class="spacer"></div>
+        <button class="icon-btn" data-action="skip-login" aria-label="跳过">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h12l-4-4l1.4-1.4L21.8 12l-7.4 5.4L13 16l4-4H5v0z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <div class="banner">
+          <h2>欢迎回来</h2>
+          <p>这是原型登录：仅用于保存“已登录状态”和基础信息。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="form">
+          <div class="field">
+            <label>用户名</label>
+            <input type="text" data-el="login-name" placeholder="输入用户名" />
+          </div>
+          <div class="field">
+            <label>邮箱（可选）</label>
+            <input type="text" data-el="login-email" placeholder="name@example.com" />
+          </div>
+        </div>
+        <div style="margin-top:12px;">
+          <button class="btn-primary" type="button" data-action="do-login">登录</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./assets/app.js"></script>
+</body>
+</html>
+

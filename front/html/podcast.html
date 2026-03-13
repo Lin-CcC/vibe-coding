@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>网易云原型 - 我的播客</title>
+  <link rel="stylesheet" href="./assets/app.css" />
+</head>
+<body data-page="podcast">
+  <div class="app no-tab">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="icon-btn" onclick="history.length>1?history.back():location.href='./index.html'" aria-label="返回">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15.5 5l-7 7l7 7l-1.4 1.4L5.7 12l8.4-8.4L15.5 5z"/></svg>
+        </button>
+        <div class="title">我的播客</div>
+        <div class="spacer"></div>
+        <a class="icon-btn" href="./profile.html" aria-label="用户资料">
+          <div class="avatar small" data-user-avatar></div>
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <div class="banner">
+          <h2>播客（原型）</h2>
+          <p>这里先做“订阅列表”的页面结构，后续可扩展到播客详情/播放。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h3>订阅</h3>
+          <div class="more">3 个</div>
+        </div>
+        <div class="list" data-el="podcast-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <div data-mount="miniplayer"></div>
+  <script src="./assets/app.js"></script>
+</body>
+</html>
+

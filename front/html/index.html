@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>网易云原型 - 发现</title>
+  <link rel="stylesheet" href="./assets/app.css" />
+</head>
+<body data-page="discover">
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="avatar" data-user-avatar data-action="open-menu" type="button" aria-label="打开功能菜单"></button>
+        <a class="search-pill" href="./search.html" aria-label="去搜索">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M10 4a6 6 0 1 1 0 12a6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8zm10.3 14.9l-3.6-3.6a8 8 0 1 1 1.4-1.4l3.6 3.6a1 1 0 0 1-1.4 1.4z"/></svg>
+          <span>搜索歌曲/歌手/歌单</span>
+        </a>
+        <div style="width:42px;"></div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <div class="banner">
+          <h2>今日推荐</h2>
+          <p>静态原型：点击歌单进入详情；点击歌曲进入播放页（支持迷你播放器）。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h3>推荐歌单</h3>
+          <div class="more">更多</div>
+        </div>
+        <div class="grid" data-el="playlist-grid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h3>为你推荐</h3>
+          <div class="more">基于歌单</div>
+        </div>
+        <div class="list" data-el="rec-tracks"></div>
+      </section>
+    </main>
+  </div>
+
+  <div data-mount="miniplayer"></div>
+  <div data-mount="tabbar"></div>
+
+  <div class="drawer-overlay" data-el="app-menu" aria-label="功能菜单">
+    <aside class="drawer left" role="dialog" aria-label="功能菜单抽屉">
+      <div class="drawer-head">
+        <a class="avatar small" data-el="menu-avatar" href="./profile.html" aria-label="进入用户资料"></a>
+        <div class="meta">
+          <div class="t" data-el="drawer-name">-</div>
+          <div class="s">功能菜单</div>
+        </div>
+        <button class="icon-btn" data-action="logout" aria-label="退出登录" style="display:none;">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M10 17v2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5v2H5v10h5zm4.6-1.4L13.2 14l2.2-2.2H9v-2h6.4L13.2 7.6L14.6 6.2L19.4 11l-4.8 4.8z"/></svg>
+        </button>
+      </div>
+      <div class="drawer-body">
+        <div class="drawer-list">
+          <a class="drawer-item" href="./profile.html">
+            <div class="left">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z"/></svg>
+              <span>用户资料</span>
+            </div>
+            <div class="right">头像/信息</div>
+          </a>
+          <a class="drawer-item" href="./recent.html">
+            <div class="left">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 8v5l4 2l1-1.7l-3-1.5V8h-2zM12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16a8 8 0 0 1 0-16z"/></svg>
+              <span>最近播放</span>
+            </div>
+            <div class="right">历史记录</div>
+          </a>
+          <a class="drawer-item" href="./podcast.html">
+            <div class="left">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 0-5 5v2a2 2 0 0 0 2 2h1v-4H9v-0a3 3 0 1 1 6 0v0h-1v4h1a2 2 0 0 0 2-2v-2a5 5 0 0 0-5-5zm-1 14h2v-7h-2v7z"/></svg>
+              <span>我的播客</span>
+            </div>
+            <div class="right">订阅/收听</div>
+          </a>
+          <a class="drawer-item" href="./liked.html">
+            <div class="left">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.4-8.5C.7 9.2 2.7 6 6.2 6c2 0 3.2 1 3.8 1.8C10.6 7 11.8 6 13.8 6c3.5 0 5.5 3.2 3.6 6.5C19 16.6 12 21 12 21z"/></svg>
+              <span>我喜欢的音乐</span>
+            </div>
+            <div class="right">收藏列表</div>
+          </a>
+          <button class="drawer-item" type="button" data-action="switch-account">
+            <div class="left">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 4l4 4h-3v6h-2V8H8l4-4zm0 16l-4-4h3v-6h2v6h3l-4 4z"/></svg>
+              <span>切换账号</span>
+            </div>
+            <div class="right">一键切换</div>
+          </button>
+          <a class="drawer-item" href="./settings.html">
+            <div class="left">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M19.4 13a7.8 7.8 0 0 0 .1-2l2-1.5l-2-3.5l-2.4 1a7.7 7.7 0 0 0-1.7-1l-.4-2.6H9l-.4 2.6a7.7 7.7 0 0 0-1.7 1l-2.4-1l-2 3.5L4.6 11a7.8 7.8 0 0 0 .1 2L2.7 14.5l2 3.5l2.4-1a7.7 7.7 0 0 0 1.7 1l.4 2.6h6l.4-2.6a7.7 7.7 0 0 0 1.7-1l2.4 1l2-3.5l-2-1.5zM12 15.5a3.5 3.5 0 1 1 0-7a3.5 3.5 0 0 1 0 7z"/></svg>
+              <span>设置</span>
+            </div>
+            <div class="right">播放/偏好/界面</div>
+          </a>
+        </div>
+      </div>
+      <div class="drawer-foot">
+        <button class="drawer-close" data-action="close-more" type="button">关闭</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="sheet-overlay" data-el="account-sheet" aria-label="切换账号">
+    <div style="width:100%;">
+      <div class="sheet">
+        <h4>选择账号</h4>
+        <div data-el="account-list"></div>
+      </div>
+      <div class="sheet cancel">
+        <button data-action="close-account-sheet" type="button">取消</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>网易云原型 - 播放页</title>
+  <link rel="stylesheet" href="./assets/app.css" />
+</head>
+<body data-page="player">
+  <div class="app player no-mini">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="icon-btn" data-action="back" aria-label="返回">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15.5 5l-7 7l7 7l-1.4 1.4L5.7 12l8.4-8.4L15.5 5z"/></svg>
+        </button>
+        <div class="title" style="color:#fff;">正在播放</div>
+        <div class="spacer"></div>
+        <button class="icon-btn" aria-label="更多">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 7a2 2 0 1 1 0-4a2 2 0 0 1 0 4zm0 7a2 2 0 1 1 0-4a2 2 0 0 1 0 4zm0 7a2 2 0 1 1 0-4a2 2 0 0 1 0 4z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="player-hero" data-el="disc-wrap">
+        <div class="disc" aria-hidden="true">
+          <div class="disc-center"><div></div></div>
+        </div>
+      </section>
+
+      <section class="player-meta">
+        <div class="t" data-el="song-title">-</div>
+        <div class="s" data-el="song-artist">-</div>
+      </section>
+
+      <section class="lyric" data-el="lyric"></section>
+
+      <section class="controls">
+        <div class="timeline">
+          <div class="time" data-el="cur">0:00</div>
+          <div class="range"><div data-el="bar"></div></div>
+          <div class="time" data-el="dur">0:00</div>
+        </div>
+
+        <div class="btn-row">
+          <button class="small" data-action="player-prev" aria-label="上一首">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M7 6h2v12H7V6zm3 6l10-6v12l-10-6z"/></svg>
+          </button>
+          <button class="big" data-action="player-play" aria-label="播放/暂停">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M8 5v14l12-7L8 5z"/></svg>
+          </button>
+          <button class="small" data-action="player-next" aria-label="下一首">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M15 6h2v12h-2V6zM4 18V6l10 6-10 6z"/></svg>
+          </button>
+        </div>
+
+        <div class="toggle">
+          <button data-action="toggle-like" type="button">♡ 喜欢</button>
+          <button data-action="toggle-lyric" type="button">显示封面</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./assets/app.js"></script>
+</body>
+</html>

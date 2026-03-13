@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>网易云原型 - 搜索</title>
+  <link rel="stylesheet" href="./assets/app.css" />
+</head>
+<body data-page="search">
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="icon-btn" href="./index.html" aria-label="返回">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15.5 5l-7 7l7 7l-1.4 1.4L5.7 12l8.4-8.4L15.5 5z"/></svg>
+        </a>
+        <div class="title">搜索</div>
+        <div class="spacer"></div>
+        <button class="icon-btn" aria-label="语音">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <input class="search-input" data-el="q" placeholder="输入关键词（歌曲/歌手/歌单）" />
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h3>热搜</h3>
+          <div class="more">点击填入</div>
+        </div>
+        <div class="chips" data-el="hot"></div>
+      </section>
+
+      <section class="section">
+        <div class="list" data-el="results"></div>
+      </section>
+    </main>
+  </div>
+
+  <div data-mount="miniplayer"></div>
+  <div data-mount="tabbar"></div>
+
+  <script src="./assets/app.js"></script>
+</body>
+</html>
+

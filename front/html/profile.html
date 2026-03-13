@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>网易云原型 - 用户资料</title>
+  <link rel="stylesheet" href="./assets/app.css" />
+</head>
+<body data-page="profile">
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="title">我的</div>
+        <div class="spacer"></div>
+        <div style="width:42px;"></div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <div class="card" style="padding:14px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="avatar" data-el="profile-avatar" style="width:82px;height:82px;font-size:26px; cursor:pointer;" title="点击更换头像"></div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:16px; font-weight:900;" data-el="profile-title">-</div>
+              <div class="muted ellipsis" style="margin-top:6px; font-size:12px; max-width:100%;" data-el="profile-signature-preview">点击头像更换；信息保存在本地</div>
+            </div>
+          </div>
+          <input data-el="profile-file" type="file" accept="image/*" style="display:none;" />
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="form">
+          <div class="field">
+            <label>用户名</label>
+            <input type="text" data-el="profile-name" placeholder="输入用户名" />
+          </div>
+          <div class="field">
+            <label>个性签名</label>
+            <input type="text" data-el="profile-signature" maxlength="40" placeholder="最多 40 字（超出会自动省略）" />
+          </div>
+          <div class="field">
+            <label>邮箱</label>
+            <input type="text" data-el="profile-email" placeholder="name@example.com" />
+          </div>
+          <div class="field">
+            <label>性别</label>
+            <select data-el="profile-gender" aria-label="性别">
+              <option value="">未设置</option>
+              <option value="男">男</option>
+              <option value="女">女</option>
+              <option value="不方便透露">不方便透露</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>住址</label>
+            <input type="text" data-el="profile-address" placeholder="填写城市/住址（可选）" />
+          </div>
+        </div>
+        <div style="margin-top:12px;">
+          <button class="btn-primary" type="button" data-action="save-profile">保存</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div data-mount="miniplayer"></div>
+  <div data-mount="tabbar"></div>
+  <script src="./assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{"type":"server-started","port":58337,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:58337","screen_dir":"g:\\vibe_coding\\project\\.superpowers\\brainstorm\\19540-1773415290"}
+{"type":"screen-added","file":"g:\\vibe_coding\\project\\.superpowers\\brainstorm\\19540-1773415290\\00-scope.html"}
+{"source":"user-event","type":"click","text":"B\n    \n      常用主路径\n      发现 + 搜索 + 播放页 + 歌单详情","choice":"b","id":null,"timestamp":1773386568641}
+{"source":"user-event","type":"click","text":"B\n    \n      常用主路径\n      发现 + 搜索 + 播放页 + 歌单详情","choice":"b","id":null,"timestamp":1773386575089}
+{"source":"user-event","type":"click","text":"B\n    \n      常用主路径\n      发现 + 搜索 + 播放页 + 歌单详情","choice":"b","id":null,"timestamp":1773386575257}
+{"source":"user-event","type":"click","text":"B\n    \n      常用主路径\n      发现 + 搜索 + 播放页 + 歌单详情","choice":"b","id":null,"timestamp":1773386586713}
+{"type":"screen-added","file":"g:\\vibe_coding\\project\\.superpowers\\brainstorm\\19540-1773415290\\01-layout.html"}
+{"source":"user-event","type":"click","text":"A\n    选 A（推荐）保留底部 Tab + 迷你播放器","choice":"a","id":null,"timestamp":1773386678433}
+{"type":"screen-added","file":"g:\\vibe_coding\\project\\.superpowers\\brainstorm\\19540-1773415290\\02-preview.html"}
+{"type":"server-stopped","reason":"idle timeout"}

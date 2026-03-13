@@ -1,0 +1,45 @@
+<h2>“更多功能”弹层样式</h2>
+<p class="subtitle">点击发现页右上角选项按钮后出现：最近播放 / 我的播客 / 我喜欢的音乐</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">A：底部 Action Sheet（推荐）</div>
+    <div class="mockup-body">
+      <div class="placeholder" style="height:180px;">发现页内容</div>
+      <div style="margin-top:10px; border:1px solid rgba(0,0,0,.12); border-radius:16px; background:#fff; overflow:hidden;">
+        <div style="padding:10px 12px; font-weight:800;">更多功能</div>
+        <div style="border-top:1px solid rgba(0,0,0,.08); padding:12px;">最近播放</div>
+        <div style="border-top:1px solid rgba(0,0,0,.08); padding:12px;">我的播客</div>
+        <div style="border-top:1px solid rgba(0,0,0,.08); padding:12px;">我喜欢的音乐</div>
+        <div style="border-top:1px solid rgba(0,0,0,.08); padding:12px; color:#6b7280;">取消</div>
+      </div>
+      <p class="subtitle" style="margin-top:10px;">优点：更像移动端操作；不打断主页面</p>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">B：独立“更多”页面</div>
+    <div class="mockup-body">
+      <div style="border:1px solid rgba(0,0,0,.12); border-radius:14px; background:#fff; padding:10px 12px; font-weight:800;">
+        更多
+      </div>
+      <div style="margin-top:10px; border:1px solid rgba(0,0,0,.12); border-radius:16px; background:#fff; overflow:hidden;">
+        <div style="padding:12px;">最近播放</div>
+        <div style="border-top:1px solid rgba(0,0,0,.08); padding:12px;">我的播客</div>
+        <div style="border-top:1px solid rgba(0,0,0,.08); padding:12px;">我喜欢的音乐</div>
+      </div>
+      <p class="subtitle" style="margin-top:10px;">优点：实现最简单；每项都可自然跳转</p>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content"><h3>选 A（推荐）</h3><p>发现页内底部弹层</p></div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content"><h3>选 B</h3><p>做一个独立的“更多”页面</p></div>
+  </div>
+</div>

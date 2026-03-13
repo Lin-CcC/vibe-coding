@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>网易云原型 - 歌单详情</title>
+  <link rel="stylesheet" href="./assets/app.css" />
+</head>
+<body data-page="playlist">
+  <div class="app no-tab">
+    <header class="topbar">
+        <div class="topbar-inner">
+        <button class="icon-btn" onclick="history.length>1?history.back():location.href='./index.html'" aria-label="返回">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15.5 5l-7 7l7 7l-1.4 1.4L5.7 12l8.4-8.4L15.5 5z"/></svg>
+        </button>
+        <div class="title">歌单</div>
+        <div class="spacer"></div>
+        <button class="icon-btn" aria-label="分享">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.2-3.1a3.1 3.1 0 0 0 0-2.2l6.2-3.1A3 3 0 1 0 15 6a3 3 0 0 0 .1.7L9 9.8a3 3 0 1 0 0 4.4l6.1 3.1A3 3 0 1 0 18 16z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <div class="card" style="padding:12px;">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div style="width:76px; height:76px; border-radius:18px; background:linear-gradient(135deg, rgba(211,58,49,.40), rgba(0,0,0,.08)); border:1px solid rgba(0,0,0,.10);"></div>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:16px; font-weight:850; line-height:1.2;" data-el="pl-title">歌单标题</div>
+              <div class="muted" style="margin-top:6px; font-size:12px;" data-el="pl-count">-</div>
+              <div class="muted" style="margin-top:6px; font-size:12px; line-height:1.35;" data-el="pl-desc">-</div>
+            </div>
+          </div>
+          <div class="chips" style="margin-top:10px;" data-el="pl-tags"></div>
+          <div style="margin-top:12px; display:flex; gap:10px;">
+            <button data-action="play-all" style="flex:1; height:44px; border-radius:14px; border:1px solid rgba(0,0,0,.08); background:var(--brand); color:#fff; font-weight:800;">
+              ▶ 播放全部
+            </button>
+            <button data-action="toggle-like-playlist" style="width:56px; height:44px; border-radius:14px; border:1px solid rgba(0,0,0,.08); background:#fff; font-size:18px; font-weight:900;">
+              ♡
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h3>歌曲列表</h3>
+          <div class="more">点击播放</div>
+        </div>
+        <div class="list" data-el="pl-tracks"></div>
+      </section>
+    </main>
+  </div>
+
+  <div data-mount="miniplayer"></div>
+  <script src="./assets/app.js"></script>
+</body>
+</html>

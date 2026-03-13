@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>网易云原型 - 设置</title>
+  <link rel="stylesheet" href="./assets/app.css" />
+</head>
+<body data-page="settings">
+  <div class="app no-tab">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="icon-btn" onclick="history.length>1?history.back():location.href='./index.html'" aria-label="返回">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M15.5 5l-7 7l7 7l-1.4 1.4L5.7 12l8.4-8.4L15.5 5z"/></svg>
+        </button>
+        <div class="title">设置</div>
+        <div class="spacer"></div>
+        <div style="width:42px;"></div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="section">
+        <div class="banner">
+          <h2>偏好与播放</h2>
+          <p>这是原型设置：所有选项会保存到本地（刷新仍然存在）。</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h3>播放设置</h3>
+          <div class="more">Music</div>
+        </div>
+        <div class="form">
+          <div class="field">
+            <label><input type="checkbox" data-el="set-autoplay" /> 自动播放</label>
+            <div class="muted" style="font-size:12px;">进入播放页后自动开始播放（原型行为）</div>
+          </div>
+          <div class="field">
+            <label><input type="checkbox" data-el="set-wifi" /> 仅 Wi‑Fi 播放（示意）</label>
+            <div class="muted" style="font-size:12px;">仅作原型展示，不做真实网络判断</div>
+          </div>
+          <div class="field">
+            <label>淡入淡出（秒）</label>
+            <select data-el="set-crossfade" aria-label="淡入淡出">
+              <option value="0">关闭</option>
+              <option value="2">2 秒</option>
+              <option value="4">4 秒</option>
+              <option value="6">6 秒</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h3>内容偏好</h3>
+          <div class="more">Preference</div>
+        </div>
+        <div class="form">
+          <div class="field">
+            <label><input type="checkbox" data-el="set-explicit" /> 过滤敏感内容（示意）</label>
+            <div class="muted" style="font-size:12px;">原型不做真实过滤，仅保存开关状态</div>
+          </div>
+          <div class="field">
+            <label>语言</label>
+            <select data-el="set-lang" aria-label="语言">
+              <option value="zh">中文</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">
+          <h3>界面大小</h3>
+          <div class="more">UI</div>
+        </div>
+        <div class="form">
+          <div class="field">
+            <label>字号/密度</label>
+            <select data-el="set-ui" aria-label="界面大小">
+              <option value="sm">小</option>
+              <option value="md">标准</option>
+              <option value="lg">大</option>
+            </select>
+            <div class="muted" style="font-size:12px;">用于原型展示；会影响部分文字大小</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <button class="btn-ghost" type="button" data-action="reset-settings">恢复默认</button>
+      </section>
+    </main>
+  </div>
+
+  <div data-mount="miniplayer"></div>
+  <script src="./assets/app.js"></script>
+</body>
+</html>

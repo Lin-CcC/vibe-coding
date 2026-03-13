@@ -1,0 +1,52 @@
+<h2>已落地 4 个页面（B 范围）</h2>
+<p class="subtitle">下一步：在本机启动静态服务，然后用 URL 预览</p>
+
+<div class="section">
+  <h3>启动命令（PowerShell）</h3>
+  <div class="mockup">
+    <div class="mockup-header">在 project 根目录执行</div>
+    <div class="mockup-body">
+      <pre style="margin:0; white-space:pre-wrap;">Set-Location g:\vibe_coding\project\front\html
+python -m http.server 5173</pre>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>预览入口</h3>
+  <div class="options">
+    <div class="option" data-choice="discover" onclick="toggleSelect(this)">
+      <div class="letter">1</div>
+      <div class="content">
+        <h3>发现</h3>
+        <p>http://localhost:5173/index.html</p>
+      </div>
+    </div>
+    <div class="option" data-choice="search" onclick="toggleSelect(this)">
+      <div class="letter">2</div>
+      <div class="content">
+        <h3>搜索</h3>
+        <p>http://localhost:5173/search.html</p>
+      </div>
+    </div>
+    <div class="option" data-choice="playlist" onclick="toggleSelect(this)">
+      <div class="letter">3</div>
+      <div class="content">
+        <h3>歌单详情（示例）</h3>
+        <p>http://localhost:5173/playlist.html?id=1</p>
+      </div>
+    </div>
+    <div class="option" data-choice="player" onclick="toggleSelect(this)">
+      <div class="letter">4</div>
+      <div class="content">
+        <h3>播放页</h3>
+        <p>http://localhost:5173/player.html</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="subtitle">交互：点击歌曲进入播放页；底部迷你播放器可播放/暂停并点击进入播放页。</p>
+</div>
+

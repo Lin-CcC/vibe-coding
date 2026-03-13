@@ -1,0 +1,53 @@
+<h2>导航结构选型</h2>
+<p class="subtitle">为 B 范围（发现/搜索/歌单详情/播放）选一个基础骨架</p>
+
+<div class="split">
+  <div class="mockup">
+    <div class="mockup-header">A：底部双 Tab + 迷你播放器（推荐）</div>
+    <div class="mockup-body">
+      <div class="section">
+        <div class="mock-content" style="min-height: 220px;">
+          <div class="label">页面内容区</div>
+          <div style="margin-top: 10px;">
+            <div class="placeholder">发现 / 搜索 / 歌单 / 播放（页面主体）</div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="mock-nav" style="display:flex; justify-content:space-between;">
+          <span>◄</span><span>迷你播放器：歌名 - 歌手 ▷</span><span>❤</span>
+        </div>
+      </div>
+      <div class="mock-nav" style="display:flex; justify-content:space-around;">
+        <span>发现</span><span>搜索</span>
+      </div>
+      <p class="subtitle" style="margin-top:10px;">优点：更像真实 App；四页都能无缝跳转</p>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">B：纯页面跳转（无 Tab/无迷你播放器）</div>
+    <div class="mockup-body">
+      <div class="section">
+        <div class="mock-content" style="min-height: 270px;">
+          <div class="label">页面内容区</div>
+          <div style="margin-top: 10px;">
+            <div class="placeholder">每页独立头部 + 返回</div>
+          </div>
+        </div>
+      </div>
+      <p class="subtitle">优点：实现更快；更“原型图”感</p>
+    </div>
+  </div>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content"><h3>选 A（推荐）</h3><p>保留底部 Tab + 迷你播放器</p></div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content"><h3>选 B</h3><p>不做 Tab/迷你播放器，页间纯跳转</p></div>
+  </div>
+</div>
