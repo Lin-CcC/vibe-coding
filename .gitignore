@@ -1,0 +1,17 @@
+# Dependencies / package manager caches
+**/node_modules/
+
+# pnpm (workspace-local store / virtual store)
+**/.pnpm-store/
+**/.pnpm/
+
+# Build output (uncomment if you want to commit build artifacts)
+**/dist/
+
+# Tooling caches / logs
+**/.vite/
+**/*.log
+
+# Env files
+**/.env
+**/.env.*
