@@ -1,0 +1,5 @@
+{"type":"server-started","port":57239,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:57239","screen_dir":"g:\\vibe_coding\\project\\.superpowers\\brainstorm\\27076-1773439869"}
+{"type":"screen-added","file":"g:\\vibe_coding\\project\\.superpowers\\brainstorm\\27076-1773439869\\00-more-menu-style.html"}
+{"source":"user-event","type":"click","text":"A\n    选 A（推荐）发现页内底部弹层","choice":"a","id":null,"timestamp":1773411214441}
+{"source":"user-event","type":"click","text":"A\n    选 A（推荐）发现页内底部弹层","choice":"a","id":null,"timestamp":1773411223049}
+{"type":"server-stopped","reason":"idle timeout"}

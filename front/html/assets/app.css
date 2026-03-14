@@ -92,7 +92,7 @@ button,input{ font:inherit; }
   object-fit:cover;
   display:block;
 }
-.avatar.small{ width:36px; height:36px; border-radius:12px; }
+.avatar.small{ width:36px; height:36px; border-radius:999px; }
 
 .content{ padding:14px; }
 .section{ margin:12px 0 16px; }

@@ -95,13 +95,20 @@
   const SETTINGS_KEY = 'neMusicProto_settings_v1';
   const ACCOUNTS_KEY = 'neMusicProto_accounts_v1';
 
+  function guestUser() {
+    return { loggedIn: false, name: '访客', avatarDataUrl: null, signature: '', email: '', address: '', gender: '' };
+  }
+
   function getUser() {
     try {
       const raw = localStorage.getItem(USER_KEY);
-      if (!raw) return { loggedIn: false, name: '访客', avatarDataUrl: null, signature: '', email: '', address: '', gender: '' };
+      if (!raw) return guestUser();
       const u = JSON.parse(raw);
-      return {
-        loggedIn: !!u?.loggedIn,
+      const inferredLoggedIn = (u?.loggedIn === undefined || u?.loggedIn === null)
+        ? (!!(u?.email && String(u.email).trim()) || ((u?.name && String(u.name).trim()) ? String(u.name).trim() : '访客') !== '访客')
+        : !!u?.loggedIn;
+      const normalized = {
+        loggedIn: inferredLoggedIn,
         name: (u?.name && String(u.name).trim()) ? String(u.name).trim() : '访客',
         avatarDataUrl: (u?.avatarDataUrl && String(u.avatarDataUrl).startsWith('data:image/')) ? String(u.avatarDataUrl) : null,
         signature: (u?.signature && String(u.signature).trim()) ? String(u.signature).trim() : '',
@@ -109,8 +116,10 @@
         address: (u?.address && String(u.address).trim()) ? String(u.address).trim() : '',
         gender: (u?.gender && String(u.gender).trim()) ? String(u.gender).trim() : ''
       };
+      if (!normalized.loggedIn) return guestUser();
+      return normalized;
     } catch {
-      return { loggedIn: false, name: '访客', avatarDataUrl: null, signature: '', email: '', address: '', gender: '' };
+      return guestUser();
     }
   }
 
@@ -155,6 +164,15 @@
       address: u.address || ''
     });
     setAccounts(next.slice(0, 8));
+  }
+
+  function ensureCurrentAccountStored() {
+    const u = getUser();
+    if (!u.loggedIn) return;
+    const key = accountKeyOf(u);
+    const accounts = getAccounts();
+    if (accounts.some((a) => a && a.key === key)) return;
+    upsertAccountFromUser(u);
   }
 
   function getSettings() {
@@ -255,17 +273,34 @@
 
   function renderAvatarInto(el) {
     const u = getUser();
-    el.setAttribute('aria-label', `用户：${u.name}`);
-    if (u.avatarDataUrl) {
-      el.innerHTML = `<img alt="" src="${u.avatarDataUrl}">`;
-    } else {
+    if (!u.loggedIn) {
+      const curLabel = el.getAttribute('aria-label');
+      if (!curLabel || /^用户：/.test(curLabel) || curLabel === '登录') el.setAttribute('aria-label', '登录');
+      el.innerHTML = '';
+      el.textContent = '登录';
+      return;
+    }
+
+    const curLabel = el.getAttribute('aria-label');
+    if (!curLabel || /^用户：/.test(curLabel)) el.setAttribute('aria-label', `用户：${u.name}`);
+    if (u.avatarDataUrl) el.innerHTML = `<img alt="" src="${u.avatarDataUrl}">`;
+    else {
+      el.innerHTML = '';
       el.textContent = getInitial(u.name);
     }
   }
 
   function mountUserAvatars() {
+    const u = getUser();
     document.querySelectorAll('[data-user-avatar]').forEach((el) => {
       renderAvatarInto(el);
+      const a = el.closest('a');
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (!/profile\.html(?:$|\?)/.test(href) && href !== './profile.html') return;
+      if (u.loggedIn) return;
+      a.setAttribute('href', './login.html');
+      if (!a.getAttribute('aria-label')) a.setAttribute('aria-label', '去登录');
     });
   }
 
@@ -277,30 +312,25 @@
 
   function mountMenuHeader() {
     const avatarLink = document.querySelector('[data-el="menu-avatar"]');
-    const logoutBtn = document.querySelector('[data-action="logout"]');
+    const u = getUser();
+
     if (avatarLink) {
-      const u = getUser();
-      const accounts = getAccounts();
-      avatarLink.removeAttribute('data-user-avatar');
-      if (!u.loggedIn && accounts.length === 0) {
-        avatarLink.setAttribute('href', './login.html');
-        avatarLink.classList.add('avatar');
-        avatarLink.innerHTML = '登录';
-        avatarLink.setAttribute('aria-label', '去登录');
-      } else if (!u.loggedIn) {
-        avatarLink.setAttribute('href', './login.html');
-        avatarLink.innerHTML = '登录';
-        avatarLink.setAttribute('aria-label', '去登录');
-      } else {
+      if (u.loggedIn) {
         avatarLink.setAttribute('href', './profile.html');
-        renderAvatarInto(avatarLink);
-        avatarLink.setAttribute('aria-label', `用户：${u.name}`);
+      } else {
+        avatarLink.setAttribute('href', './login.html');
+        avatarLink.setAttribute('aria-label', '去登录');
       }
+      avatarLink.setAttribute('data-user-avatar', '');
+      renderAvatarInto(avatarLink);
     }
-    if (logoutBtn) {
-      const u = getUser();
-      logoutBtn.style.display = u.loggedIn ? '' : 'none';
-    }
+
+    const foot = document.querySelector('.drawer-foot');
+    if (foot) foot.style.display = u.loggedIn ? '' : 'none';
+
+    document.querySelectorAll('[data-action="logout"]').forEach((btn) => {
+      btn.style.display = u.loggedIn ? '' : 'none';
+    });
   }
 
   function applyUiScale() {
@@ -789,7 +819,12 @@
     if (!overlay || !openBtn) return;
 
     const close = () => overlay.classList.remove('open');
-    const open = () => overlay.classList.add('open');
+    const open = () => {
+      ensureCurrentAccountStored();
+      mountDrawerName();
+      mountMenuHeader();
+      overlay.classList.add('open');
+    };
 
     openBtn.addEventListener('click', open);
     overlay.addEventListener('click', (e) => {
@@ -807,7 +842,7 @@
         const u = getUser();
         if (!u.loggedIn) return;
         upsertAccountFromUser(u);
-        setUser({ ...u, loggedIn: false });
+        setUser({ loggedIn: false, name: '访客', avatarDataUrl: null, signature: '', email: '', address: '', gender: '' });
         close();
         location.href = './index.html';
       });
@@ -818,20 +853,25 @@
       const list = document.querySelector('[data-el="account-list"]');
       if (!sheet || !list) return;
       const accounts = getAccounts();
-      if (!accounts.length) {
-        close();
-        location.href = './login.html';
-        return;
-      }
       list.innerHTML = accounts.map((a) => `
         <button class="drawer-item" type="button" data-account-key="${escapeHtml(a.key)}">
           <div class="left">
-            <div class="avatar small">${escapeHtml(getInitial(a.name || '用户'))}</div>
+            <div class="avatar small">${a.avatarDataUrl ? `<img alt=\"\" src=\"${escapeHtml(a.avatarDataUrl)}\">` : escapeHtml(getInitial(a.name || '用户'))}</div>
             <span>${escapeHtml(a.name || '用户')}</span>
           </div>
           <div class="right">${escapeHtml((a.email || '').trim() || '点击切换')}</div>
         </button>
       `).join('');
+
+      list.innerHTML += `
+        <button class="drawer-item" type="button" data-action="add-account">
+          <div class="left">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>
+            <span>添加账号</span>
+          </div>
+          <div class="right">去登录</div>
+        </button>
+      `;
 
       list.querySelectorAll('[data-account-key]').forEach((b) => {
         b.addEventListener('click', () => {
@@ -852,6 +892,13 @@
           sheet.classList.remove('open');
           close();
           location.href = './index.html';
+        });
+      });
+      list.querySelectorAll('[data-action="add-account"]').forEach((b) => {
+        b.addEventListener('click', () => {
+          sheet.classList.remove('open');
+          close();
+          location.href = './login.html';
         });
       });
 
@@ -1356,6 +1403,7 @@
     mountMiniPlayer();
     mountUserAvatars();
     mountDrawerName();
+    ensureCurrentAccountStored();
     mountMenuHeader();
     window.addEventListener('proto:user', () => mountUserAvatars());
     window.addEventListener('proto:user', () => mountDrawerName());
