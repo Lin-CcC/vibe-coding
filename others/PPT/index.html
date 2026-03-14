@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>网页PPT（离线版）</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <aside class="sidebar" id="sidebar" aria-label="缩略图侧边栏">
+        <div class="sidebar__top">
+          <div class="brand">
+            <div class="brand__title">网页PPT</div>
+          </div>
+          <button class="btn btn--ghost" id="toggleSidebarBtn" type="button" title="收起/展开侧边栏">
+            侧边栏
+          </button>
+        </div>
+        <div class="thumbs" id="thumbs" role="navigation" aria-label="幻灯片缩略图列表"></div>
+      </aside>
+
+      <main class="main" id="main">
+        <header class="topbar">
+          <div class="topbar__left">
+            <button class="btn" id="prevBtn" type="button" title="上一页（← / ↑）">上一页</button>
+            <button class="btn" id="nextBtn" type="button" title="下一页（→ / ↓）">下一页</button>
+            <button class="btn btn--ghost" id="homeBtn" type="button" title="回到第 1 页">首页</button>
+          </div>
+          <div class="topbar__right">
+            <div class="status" id="statusLabel">-</div>
+          </div>
+        </header>
+
+        <section class="stage" id="stage" aria-label="幻灯片展示区">
+          <div class="viewport" id="viewport">
+            <div class="slide slide--base" id="slideRoot" role="document" aria-label="当前幻灯片"></div>
+          </div>
+        </section>
+
+        <footer class="hint">
+          键盘：←/→ 或 ↑/↓ 切页；点击左侧缩略图切换。离线版：双击本页即可运行。
+        </footer>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
